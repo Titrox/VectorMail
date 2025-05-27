@@ -1,0 +1,34 @@
+# === Node / Vue.js ===
+node_modules/
+dist/
+.env
+.env.*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-lock.yaml
+*.local
+.DS_Store
+
+# === IntelliJ / JetBrains ===
+.idea/
+*.iml
+*.iws
+out/
+
+
+# === VSCode s===
+.vscode/
+
+# === Logs ===
+logs/
+*.log
+
+# === System ===
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# === Optionales Caching (z. B. von Vite/TypeScript) ===
+.cache/
+.cache-loader/
