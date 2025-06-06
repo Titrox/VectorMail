@@ -22,13 +22,11 @@ let lableProbs = [0.00,0.00,0.00,0.00,0.00,0.00,0.00];
 
 // Classification categories (must match backend keys)
 const labelsAndOriginalIndices = [
-  'Schadensmeldung',
-  'Vertragsänderung',
-  'Rückfragen',
-  'Bewerbung',
-  'Kündigung',
-  'Spam',
-  'Sonstiges'
+  'Kfz-Schaden',
+  'Hausrat-Schaden',
+  'Haftpflicht',
+  'Reiseschaden',
+  'Tierkrankheit',
 ];
 
 // Animated values for smooth progress display
