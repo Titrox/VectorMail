@@ -1,15 +1,15 @@
-# ectorMail
+# VectorMail
 
-ectorMail ist ein modulares E-Mail-Klassifizierungssystem mit einer interaktiven Benutzeroberfläche. Das Projekt besteht aus einem modernen Frontend, einem Spring Boot-Backend und einem Python-basierten Klassifizierungsmodul, das in einem Docker-Container läuft. Benutzer können E-Mail-Texte zur Klassifizierung eingeben und Echtzeit-Wahrscheinlichkeiten sowie visuelles Feedback für verschiedene Kategorien beobachten.
+VectorMail ist ein modulares E-Mail-Klassifizierungssystem mit einer interaktiven Benutzeroberfläche. Das Projekt besteht aus einem modernen Frontend, einem Spring Boot-Backend und einem Python-basierten Klassifizierungsmodul, das in einem Docker-Container läuft. Benutzer können E-Mail-Texte zur Klassifizierung eingeben und Echtzeit-Wahrscheinlichkeiten sowie visuelles Feedback für verschiedene Kategorien beobachten.
 
-![ectorMail Interface](./docs/images/Screenshot-Interface.png)
+![VectorMail Interface](./docs/images/Screenshot-Interface.png)
 
 ---
 
 ## Project Structure
 
 ```
-ectorMail/
+VectorMail/
 ├── api/                 # Spring Boot backend (REST API)
 ├── frontend/            # Vue.js frontend (Vite)
 ├── python-service/      # Python-based classification module (Flask)
