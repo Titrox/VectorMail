@@ -1,6 +1,6 @@
 <script setup>
 import { ChevronLeft, ChevronRight, MailQuestion } from 'lucide-vue-next';
-import { onMounted, ref } from "vue";
+import {onMounted, ref, watch} from "vue";
 import emailsData from '../assets/example_emails.json';
 import axios from "axios";
 
@@ -22,13 +22,13 @@ let lableProbs = [0.00,0.00,0.00,0.00,0.00,0.00,0.00];
 
 // Classification categories (must match backend keys)
 const labelsAndOriginalIndices = [
-  { name: 'Schadensmeldung' },
-  { name: 'Vertragsänderung' },
-  { name: 'Rückfragen' },
-  { name: 'Bewerbung' },
-  { name: 'Kündigung' },
-  { name: 'Spam' },
-  { name: 'Sonstiges' }
+  'Schadensmeldung',
+  'Vertragsänderung',
+  'Rückfragen',
+  'Bewerbung',
+  'Kündigung',
+  'Spam',
+  'Sonstiges'
 ];
 
 // Animated values for smooth progress display
@@ -37,6 +37,16 @@ let animatedLabelProbs = ref(Array(labelsAndOriginalIndices.length).fill(0.00));
 // Load first random example email on mount
 onMounted(() => {
   exampleEmail.value = getRandomEmail();
+});
+
+
+// Hide label probabilities if user changes custom email
+watch(userEmail, (newValue, oldValue) => {
+
+  if (newValue !== oldValue) {
+    showLabelProbs.value = false;
+  }
+
 });
 
 
@@ -99,8 +109,9 @@ async function getProbs(emailToEvaluate) {
 
 // Update label probability array with backend response
 function updateProbs(labelProbsJson) {
-  labelsAndOriginalIndices.forEach((labelInfo, index) => {
-    lableProbs[index] = labelProbsJson[labelInfo.name] ?? 0.00;
+  labelsAndOriginalIndices.forEach((label, index) => {
+    console.log(label);
+    lableProbs[index] = labelProbsJson[label] ?? 0.00;
   });
 }
 
@@ -153,11 +164,15 @@ function getColorForProbability(prob) {
     <div class="container container--email-label">
       <div class="container container--lable-container">
 
-        <div class="container container--label-prob" v-for="(labelInfo, displayIndex) in labelsAndOriginalIndices" :key="labelInfo.name">
+        <div class="container container--label-prob" v-for="(label, displayIndex) in labelsAndOriginalIndices" :key="label">
           <div class="label"
                :class="{ 'animated-label': !showLabelProbs }"
-               :style="showLabelProbs ? { backgroundColor: getColorForProbability(animatedLabelProbs[displayIndex]) } : {}">
-            {{ labelInfo.name }}
+               :style="showLabelProbs ? {
+                 backgroundColor: getColorForProbability(animatedLabelProbs[displayIndex])
+               } : {
+                 animationDelay: `${displayIndex * 150}ms` // Wave effect
+               }">
+            {{ label }}
           </div>
 
           <div

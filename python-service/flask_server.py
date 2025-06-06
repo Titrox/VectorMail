@@ -16,13 +16,13 @@ def evaluate_email():
     
     # Todo
     probs = {
-        "Schadensmeldung": random.randint(0,100),
-        "Vertragsänderung": random.randint(0,100),
-        "Rückfragen": random.randint(0,100),
-        "Bewerbung": random.randint(0,100),
-        "Kündigung": random.randint(0,100),
-        "Spam": random.randint(0,100),
-        "Sonstiges": random.randint(0,100),
+        "Schadensmeldung": random.uniform(0,100),
+        "Vertragsänderung": random.uniform(0,100),
+        "Rückfragen": random.uniform(0,100),
+        "Bewerbung": random.uniform(0,100),
+        "Kündigung": random.uniform(0,100),
+        "Spam": random.uniform(0,100),
+        "Sonstiges": random.uniform(0,100),
     }
 
     return jsonify(probs)
