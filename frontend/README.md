@@ -1,29 +1,73 @@
-# frontend
+# Frontend – VectorMail
 
-This template should help get you started developing with Vue 3 in Vite.
+Dies ist das **Frontend** des **VectorMail E-Mail-Klassifizierungsprojekts**. Es bietet eine interaktive Oberfläche für Benutzer, um E-Mail-Texte einzugeben und deren Klassifizierungsergebnisse in Echtzeit zu sehen. Eine dynamische Anzeige der Klassifizierungswahrscheinlichkeiten reagiert visuell (z.B. durch Farbcodierung), und Benutzer können eigene E-Mail-Texte eingeben oder auf Beispiels-E-Mails zugreifen.
 
-## Recommended IDE Setup
+---
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Tech Stack
 
-## Customize configuration
+- **Vue 3** – Modernes JavaScript-Framework
+- **Vite** – Schnelles Build-Tool und Entwicklungsserver
+- **JavaScript / HTML / CSS**
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+---
 
-## Project Setup
+## Voraussetzungen
 
-```sh
+Bevor Sie das Frontend ausführen, stellen Sie sicher, dass Folgendes auf Ihrem System installiert ist:
+
+- [Node.js](https://nodejs.org/) (Version **16+** empfohlen)
+- npm (wird mit Node.js geliefert)
+
+Überprüfen Sie die Versionen mit:
+
+```bash
+node -v
+npm -v
+``` 
+
+---
+
+## Erste Schritte
+
+1. Navigieren Sie zum Frontend-Ordner:
+```bash
+cd frontend
+``` 
+
+2. Installieren Sie die Abhängigkeiten:
+```bash
 npm install
-```
+``` 
 
-### Compile and Hot-Reload for Development
-
-```sh
+3. Starten Sie den Entwicklungsserver:
+```bash
 npm run dev
 ```
 
-### Compile and Minify for Production
+4. Greifen Sie auf die Anwendung zu:
 
-```sh
-npm run build
-```
+Nach dem Start des Entwicklungsservers stellt Vite eine lokale Entwicklungs-URL bereit (typischerweise http://localhost:5173). Die genaue URL wird in Ihrem Terminal angezeigt.
+
+
+
+---
+
+## Funktionen
+- Echtzeit-Anzeige der Klassifizierungswahrscheinlichkeiten für verschiedene E-Mail-Kategorien
+- Eingabe benutzerdefinierter E-Mail-Texte zur Klassifizierung
+- Visualisierung der Klassifizierungszuversicht durch farbcodierte Labels
+- Responsive Benutzeroberfläche für die E-Mail-Eingabe und Ergebnisanzeige
+- Durchblättern von Beispiel-E-Mails
+
+---
+
+
+## Hinweise
+- Stellen Sie sicher, dass das Backend (z.B. Spring Boot oder Flask in Docker) läuft und über die REST API zugänglich ist.
+- Wenn Sie das Backend lokal betreiben, konfigurieren Sie gegebenenfalls CORS oder verwenden Sie einen lokalen Proxy.
+
+
+
+
+

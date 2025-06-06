@@ -100,7 +100,16 @@ async function evaluateEmail() {
 // Call Spring Boot backend to get classification results
 async function getProbs(emailToEvaluate) {
   try {
-    const response = await axios.post(`${springBootUrl}/evaluate-email`, emailToEvaluate);
+    console.log(emailToEvaluate)
+    const response = await axios.post(
+        `${springBootUrl}/evaluate-email`,
+        emailToEvaluate,
+        {
+          headers: {
+            'Content-Type': 'application/json' // Otherwise Content-Type = Plain-Text -> error because flask is expecting JSON on /evaluate-email
+          }
+        }
+    );
     updateProbs(response.data);
   } catch (e) {
     console.log(e.message);

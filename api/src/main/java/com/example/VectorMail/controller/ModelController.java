@@ -22,10 +22,10 @@ public class ModelController {
 
 
         try {
+            System.out.println(emailToEvaluate);
             HttpHeaders header = new HttpHeaders();
             header.setContentType(MediaType.APPLICATION_JSON);
             HttpEntity<String> requestEntity = new HttpEntity<>(emailToEvaluate, header);
-
             response = restTemplate.postForEntity(String.format("%s/evaluate-email", flaskUrl), requestEntity, String.class);
 
             return response.getBody();

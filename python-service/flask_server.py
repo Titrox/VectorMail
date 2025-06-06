@@ -14,6 +14,8 @@ app = Flask(__name__)
 @app.route('/evaluate-email', methods=['POST'])
 def evaluate_email():
     
+    logger.debug(request.json)
+
     # Todo
     probs = {
         "Schadensmeldung": random.uniform(0,100),
