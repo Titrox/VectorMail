@@ -9,7 +9,7 @@ VectorMail ist ein modulares E-Mail-Klassifizierungssystem mit einer interaktive
 ## Project Structure
 
 ```
-ectorMail/
+VectorMail/
 ├── api/                 # Spring Boot backend (REST API)
 ├── frontend/            # Vue.js frontend (Vite)
 ├── python-service/      # Python-based classification module (Flask)
