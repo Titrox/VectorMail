@@ -1,47 +1,36 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+
+import EmailInput from "@/components/EmailInput.vue";
+import Background from "@/components/Background.vue";
+import Header from "@/components/Header.vue";
 </script>
 
+
+
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <Background>
+    <Header />
+    <EmailInput />
+  </Background>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
+
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Jersey+25&display=swap');
+
+html,
+body {
+  font-family: 'Jersey 25', Arial, sans-serif;
+  margin: 0;
+  border: none;
+  width: 100vw;
+  height: 100vh;
+
+  overflow-y: hidden;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
 </style>
