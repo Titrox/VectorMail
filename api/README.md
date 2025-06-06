@@ -33,7 +33,7 @@ The primary endpoint provided by this service is:
     "email text to classify"
     ```
     (Note: The body is a raw JSON string, ensure `Content-Type: application/json` is set)
--   **Response**: The classification result (as a string, often JSON) from the Python engine.
+-   **Response**: Probabilities of all defined labels.
 
 ---
 
