@@ -1,5 +1,5 @@
 <script setup>
-import { ChevronLeft, ChevronRight, MailQuestion, Info} from 'lucide-vue-next';
+import { ChevronLeft, ChevronRight, MailQuestion} from 'lucide-vue-next';
 import {onMounted, ref} from "vue";
 import emailsData from '../assets/example_emails.json'; // Stelle sicher, dass der Pfad korrekt ist
 
@@ -17,7 +17,6 @@ let showLabelProbs = ref(false);
 let lableProbs = [79.00,2.00,5.00,19.00,1.56,2.44,0.27,0.73];
 
 // Die Namen der Labels und ihre entsprechenden Indizes im lableProbs-Array
-// WICHTIG: Die Indizes hier entsprechen deiner ursprünglichen Zuweisung im Template.
 const labelsAndOriginalIndices = [
   { name: 'Schadensmeldung', probIndex: 0 },
   { name: 'Vertragsänderung', probIndex: 1 },
@@ -29,8 +28,6 @@ const labelsAndOriginalIndices = [
 ];
 
 
-// Für die Animation: Speichert die aktuell animierten Werte (7 Labels, da ein Index im Original ausgelassen wurde)
-// Initialisiere mit 0.00 für jeden *angezeigten* Label-Platz
 let animatedLabelProbs = ref(Array(labelsAndOriginalIndices.length).fill(0.00));
 
 
@@ -63,7 +60,7 @@ function incEmailIndex() {
   emailIndex = positiveModulo(emailIndex + 1, emailsData.length);
   exampleEmail.value = getExampleEmail(emailIndex);
 
-  resetLabels();
+  showLabelProbs.value = false;
 
 }
 
@@ -71,10 +68,6 @@ function decEmailIndex() {
   emailIndex = positiveModulo(emailIndex - 1, emailsData.length);
   exampleEmail.value = getExampleEmail(emailIndex);
 
-  resetLabels();
-}
-
-function resetLabels() {
   showLabelProbs.value = false;
 }
 
@@ -91,6 +84,8 @@ function evaluateEmail() {
     return;
   }
 
+  console.log(emailToEvaluate);
+
   // Hier würde die eigentliche Modell-Evaluierung stattfinden.
   // const probabilities = await evaluate(emailToEvaluate);
   // Wenn die Probabilities vom Modell dynamisch kommen, müssten sie hier lableProbs aktualisieren.
@@ -99,6 +94,10 @@ function evaluateEmail() {
   startLabelProbabilitiesAnimation();
 }
 
+
+//
+// ANIMATION
+//
 
 function startLabelProbabilitiesAnimation() {
   showLabelProbs.value = true;
