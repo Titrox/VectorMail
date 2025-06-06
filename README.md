@@ -1,8 +1,8 @@
-# ectorMail
+# VectorMail
 
-ectorMail ist ein modulares E-Mail-Klassifizierungssystem mit einer interaktiven Benutzeroberfläche. Das Projekt besteht aus einem modernen Frontend, einem Spring Boot-Backend und einem Python-basierten Klassifizierungsmodul, das in einem Docker-Container läuft. Benutzer können E-Mail-Texte zur Klassifizierung eingeben und Echtzeit-Wahrscheinlichkeiten sowie visuelles Feedback für verschiedene Kategorien beobachten.
+VectorMail ist ein modulares E-Mail-Klassifizierungssystem mit einer interaktiven Benutzeroberfläche. Das Projekt besteht aus einem modernen Frontend, einem Spring Boot-Backend und einem Python-basierten Klassifizierungsmodul, das in einem Docker-Container läuft. Benutzer können E-Mail-Texte zur Klassifizierung eingeben und Echtzeit-Wahrscheinlichkeiten sowie visuelles Feedback für verschiedene Kategorien beobachten.
 
-![ectorMail Interface](./docs/images/Screenshot-Interface.png)
+![VectorMail Interface](./docs/images/Screenshot-Interface.png)
 
 ---
 
@@ -14,7 +14,7 @@ ectorMail/
 ├── frontend/            # Vue.js frontend (Vite)
 ├── python-service/      # Python-based classification module (Flask)
 ├── docs/                # Theory and implementation details
-├── docker-compose.yml   # Launches the Flask engine container
+├── docker-compose.yml   # Launches the Fine-Tuned LLM
 ├── README.md            # Project overview
 ```
 
@@ -73,8 +73,7 @@ The application will be available at [http://localhost:5173](http://localhost:51
 
 - [`frontend/README.md`](frontend/README.md) – UI setup and features
 - [`api/README.md`](api/README.md) – Backend endpoints and setup
-- [`python-service/README.md`](python-service/README.md) - Docker setup and unittests (assuming this file will be created or is relevant)
-- [`docs/theory.pdf`](docs/theory.pdf) – Describes algorithms and evaluation strategies
+- [`docs/theory.pdf`](docs/theory.pdf) – Describes implementation and training of BERT
 
 ---
 
