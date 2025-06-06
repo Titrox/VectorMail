@@ -1,0 +1,7 @@
+services:
+  python-service:
+    build: ./python-service
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./python-service:/app

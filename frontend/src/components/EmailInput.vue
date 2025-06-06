@@ -48,7 +48,7 @@ function getRandomEmail() {
 }
 
 function getExampleEmail(index){
-  userEmail.value = ""; // E-Mail des Benutzers leeren beim Laden eines Beispiels
+  userEmail.value = "";
   return emailsData[index].text;
 }
 
