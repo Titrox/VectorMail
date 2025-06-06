@@ -18,7 +18,7 @@ let userEmail = ref("");
 let showLabelProbs = ref(false);
 
 // Final classification scores (to be updated by backend)
-let lableProbs = [79.00, 2.00, 5.00, 19.00, 1.56, 2.44, 0.27];
+let lableProbs = [0.00,0.00,0.00,0.00,0.00,0.00,0.00];
 
 // Classification categories (must match backend keys)
 const labelsAndOriginalIndices = [
@@ -289,7 +289,7 @@ Label
 .label-prob {
   opacity: 0;
   transform: translateY(-10px);
-  transition: opacity 0.5s ease, transform 0.5s ease
+  transition: opacity 0.3s ease, transform 0.3s ease
 }
 
 .label-prob--visible {

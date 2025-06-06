@@ -1,5 +1,6 @@
 from flask import Flask, request
 import logging
+import random
 from flask import jsonify
 
 # Setting up basic logging configuration
@@ -15,13 +16,13 @@ def evaluate_email():
     
     # Todo
     probs = {
-        "Schadensmeldung": 10,
-        "Vertragsänderung": 40.2122,
-        "Rückfragen": 5,
-        "Bewerbung": 10,
-        "Kündigung": 10,
-        "Spam": 10,
-        "Sonstiges": 0,
+        "Schadensmeldung": random.randint(0,100),
+        "Vertragsänderung": random.randint(0,100),
+        "Rückfragen": random.randint(0,100),
+        "Bewerbung": random.randint(0,100),
+        "Kündigung": random.randint(0,100),
+        "Spam": random.randint(0,100),
+        "Sonstiges": random.randint(0,100),
     }
 
     return jsonify(probs)
