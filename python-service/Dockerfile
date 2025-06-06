@@ -8,4 +8,4 @@ COPY requirements.txt requirements.txt
 # Install requirements
 RUN pip install --no-cache-dir -r requirements.txt
 
-CMD ["python", "fine_tuning.py"]
+CMD ["python", "flask_server.py"]

@@ -1,37 +1,40 @@
 <script setup>
-import { ChevronLeft, ChevronRight, MailQuestion} from 'lucide-vue-next';
-import {onMounted, ref} from "vue";
-import emailsData from '../assets/example_emails.json'; // Stelle sicher, dass der Pfad korrekt ist
+import { ChevronLeft, ChevronRight, MailQuestion } from 'lucide-vue-next';
+import { onMounted, ref } from "vue";
+import emailsData from '../assets/example_emails.json';
+import axios from "axios";
 
-// Example E-Mail
+// Backend API URL
+const springBootUrl = "http://localhost:8080";
+
+// Example email and index
 let exampleEmail = ref("");
 let emailIndex;
 
-// User E-Mail (reaktiv machen für v-model)
+// User input (editable)
 let userEmail = ref("");
 
-// State Management
+// UI state: whether to show probability labels
 let showLabelProbs = ref(false);
 
-// Die Ziel-Prozentwerte für die Labels (8 Werte, wie im Original-Array)
-let lableProbs = [79.00,2.00,5.00,19.00,1.56,2.44,0.27,0.73];
+// Final classification scores (to be updated by backend)
+let lableProbs = [79.00, 2.00, 5.00, 19.00, 1.56, 2.44, 0.27];
 
-// Die Namen der Labels und ihre entsprechenden Indizes im lableProbs-Array
+// Classification categories (must match backend keys)
 const labelsAndOriginalIndices = [
-  { name: 'Schadensmeldung', probIndex: 0 },
-  { name: 'Vertragsänderung', probIndex: 1 },
-  { name: 'Rückfragen', probIndex: 2 },
-  { name: 'Bewerbung', probIndex: 3 },
-  { name: 'Kündigung', probIndex: 4 },
-  { name: 'Spam', probIndex: 5 },
-  { name: 'Sonstiges', probIndex: 6 }
+  { name: 'Schadensmeldung' },
+  { name: 'Vertragsänderung' },
+  { name: 'Rückfragen' },
+  { name: 'Bewerbung' },
+  { name: 'Kündigung' },
+  { name: 'Spam' },
+  { name: 'Sonstiges' }
 ];
 
-
+// Animated values for smooth progress display
 let animatedLabelProbs = ref(Array(labelsAndOriginalIndices.length).fill(0.00));
 
-
-// Life Cycle Hooks
+// Load first random example email on mount
 onMounted(() => {
   exampleEmail.value = getRandomEmail();
 });
@@ -41,13 +44,12 @@ onMounted(() => {
 // EXAMPLE EMAIL SLIDER
 //
 
-// Triggered on mount to load random example email
 function getRandomEmail() {
   emailIndex = Math.floor(Math.random() * emailsData.length);
   return getExampleEmail(emailIndex);
 }
 
-function getExampleEmail(index){
+function getExampleEmail(index) {
   userEmail.value = "";
   return emailsData[index].text;
 }
@@ -59,15 +61,12 @@ function positiveModulo(n, m) {
 function incEmailIndex() {
   emailIndex = positiveModulo(emailIndex + 1, emailsData.length);
   exampleEmail.value = getExampleEmail(emailIndex);
-
   showLabelProbs.value = false;
-
 }
 
 function decEmailIndex() {
   emailIndex = positiveModulo(emailIndex - 1, emailsData.length);
   exampleEmail.value = getExampleEmail(emailIndex);
-
   showLabelProbs.value = false;
 }
 
@@ -76,22 +75,33 @@ function decEmailIndex() {
 // EVALUATION
 //
 
-function evaluateEmail() {
+async function evaluateEmail() {
   const emailToEvaluate = userEmail.value || exampleEmail.value;
 
   if (!emailToEvaluate) {
-    console.warn("Keine E-Mail zum Evaluieren vorhanden.");
+    console.warn("No email provided for evaluation.");
     return;
   }
 
-  console.log(emailToEvaluate);
-
-  // Hier würde die eigentliche Modell-Evaluierung stattfinden.
-  // const probabilities = await evaluate(emailToEvaluate);
-  // Wenn die Probabilities vom Modell dynamisch kommen, müssten sie hier lableProbs aktualisieren.
-  // lableProbs = probabilities; // <-- Wenn lableProbs auch ein ref wäre und dynamisch gesetzt wird.
-
+  await getProbs(emailToEvaluate);
   startLabelProbabilitiesAnimation();
+}
+
+// Call Spring Boot backend to get classification results
+async function getProbs(emailToEvaluate) {
+  try {
+    const response = await axios.post(`${springBootUrl}/evaluate-email`, emailToEvaluate);
+    updateProbs(response.data);
+  } catch (e) {
+    console.log(e.message);
+  }
+}
+
+// Update label probability array with backend response
+function updateProbs(labelProbsJson) {
+  labelsAndOriginalIndices.forEach((labelInfo, index) => {
+    lableProbs[index] = labelProbsJson[labelInfo.name] ?? 0.00;
+  });
 }
 
 
@@ -101,13 +111,12 @@ function evaluateEmail() {
 
 function startLabelProbabilitiesAnimation() {
   showLabelProbs.value = true;
-  const duration = 1500; // 1.5 Sekunden für die Animation
+  const duration = 1500;
 
-  // Setze animierte Werte vor Start der Animation auf 0 zurück
   animatedLabelProbs.value = Array(labelsAndOriginalIndices.length).fill(0.00);
 
-  labelsAndOriginalIndices.forEach((labelInfo, displayIndex) => {
-    const targetValue = lableProbs[labelInfo.probIndex]; // Zugriff auf den richtigen Wert im lableProbs-Array
+  labelsAndOriginalIndices.forEach((_, displayIndex) => {
+    const targetValue = lableProbs[displayIndex];
     const startValue = 0.00;
     const startTime = performance.now();
 
@@ -115,11 +124,10 @@ function startLabelProbabilitiesAnimation() {
       const elapsedTime = currentTime - startTime;
       let progress = Math.min(elapsedTime / duration, 1);
 
-      // Die Interpolationsfunktion: cubic ease-out
+      // Ease-out interpolation
       progress = 1 - Math.pow(1 - progress, 3);
 
       const currentValue = startValue + (targetValue - startValue) * progress;
-
       animatedLabelProbs.value[displayIndex] = parseFloat(currentValue.toFixed(2));
 
       if (progress < 1) {
@@ -130,21 +138,14 @@ function startLabelProbabilitiesAnimation() {
   });
 }
 
-// Funktion zum Mappen einer Wahrscheinlichkeit auf eine HSL-Farbe (Rot zu Grün)
+// Map a probability (0–100) to an HSL color (red → green)
 function getColorForProbability(prob) {
-
-  // Wahrscheinlichkeit auf den Bereich 0-100 klemmen
   const clampedProb = Math.max(0, Math.min(100, prob));
-
-  // Wahrscheinlichkeit auf den Farbton (Hue) mappen (0 = Rot, 120 = Grün)
   const hue = (clampedProb / 100) * 120;
-
   const saturation = 50;
   const lightness = 45;
-
   return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
 }
-
 </script>
 
 <template>
