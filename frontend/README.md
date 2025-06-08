@@ -1,25 +1,22 @@
 # Frontend – VectorMail
 
-Dies ist das **Frontend** des **VectorMail E-Mail-Klassifizierungsprojekts**. Es bietet eine interaktive Oberfläche für Benutzer, um E-Mail-Texte einzugeben und deren Klassifizierungsergebnisse in Echtzeit zu sehen. Eine dynamische Anzeige der Klassifizierungswahrscheinlichkeiten reagiert visuell (z.B. durch Farbcodierung), und Benutzer können eigene E-Mail-Texte eingeben oder auf Beispiels-E-Mails zugreifen.
-
+This is the frontend of the VectorMail email classification project. It provides an interactive interface for users to input email texts and see their classification results in real time. A dynamic display of classification probabilities reacts visually (e.g., through color-coding), and users can enter their own email texts or access example emails.
 ---
 
 ## Tech Stack
 
-- **Vue 3** – Modernes JavaScript-Framework
-- **Vite** – Schnelles Build-Tool und Entwicklungsserver
+- **Vue 3** – Modern JavaScript-Framework
+- **Vite** – Fast build tool and development server
 - **JavaScript / HTML / CSS**
 
 ---
 
-## Voraussetzungen
+## Prerequisites
+Before running the frontend, ensure the following are installed on your system:
 
-Bevor Sie das Frontend ausführen, stellen Sie sicher, dass Folgendes auf Ihrem System installiert ist:
-
-- [Node.js](https://nodejs.org/) (Version **16+** empfohlen)
-- npm (wird mit Node.js geliefert)
-
-Überprüfen Sie die Versionen mit:
+Node.js (version 16+ recommended)
+npm (comes with Node.js)
+Check versions with:
 
 ```bash
 node -v
@@ -28,44 +25,44 @@ npm -v
 
 ---
 
-## Erste Schritte
+## Getting Started
 
-1. Navigieren Sie zum Frontend-Ordner:
+1. Navigate to the frontend folder:
 ```bash
 cd frontend
 ``` 
 
-2. Installieren Sie die Abhängigkeiten:
+2. Install the dependecies:
 ```bash
 npm install
 ``` 
 
-3. Starten Sie den Entwicklungsserver:
+3. Start the development server:
 ```bash
 npm run dev
 ```
 
-4. Greifen Sie auf die Anwendung zu:
+4. Access the application:
 
-Nach dem Start des Entwicklungsservers stellt Vite eine lokale Entwicklungs-URL bereit (typischerweise http://localhost:5173). Die genaue URL wird in Ihrem Terminal angezeigt.
+After starting the dev server, Vite will provide a local development URL (typically http://localhost:5173). The exact URL will appear in your terminal.
 
 
-
----
-
-## Funktionen
-- Echtzeit-Anzeige der Klassifizierungswahrscheinlichkeiten für verschiedene E-Mail-Kategorien
-- Eingabe benutzerdefinierter E-Mail-Texte zur Klassifizierung
-- Visualisierung der Klassifizierungszuversicht durch farbcodierte Labels
-- Responsive Benutzeroberfläche für die E-Mail-Eingabe und Ergebnisanzeige
-- Durchblättern von Beispiel-E-Mails
 
 ---
 
+## Features
+- Real-time display of classification probabilities for various email categories
+- Input of custom email texts for classification
+- Visualization of classification confidence through color-coded labels
+- Responsive user interface for email input and result display
+- Browse of example emails
 
-## Hinweise
-- Stellen Sie sicher, dass das Backend (z.B. Spring Boot oder Flask in Docker) läuft und über die REST API zugänglich ist.
-- Wenn Sie das Backend lokal betreiben, konfigurieren Sie gegebenenfalls CORS oder verwenden Sie einen lokalen Proxy.
+---
+
+
+## Notes
+- Make sure the backend (e.g., Spring Boot or Flask in Docker) is running and accessible via REST API.
+- If you're running the backend locally, configure CORS or use a local proxy if needed.
 
 
 
