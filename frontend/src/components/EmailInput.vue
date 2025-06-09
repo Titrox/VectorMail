@@ -18,7 +18,7 @@ let userEmail = ref("");
 let showLabelProbs = ref(false);
 
 // Final classification scores (to be updated by backend)
-let lableProbs = [0.00,0.00,0.00,0.00,0.00,0.00,0.00];
+let lableProbs = [0.00,0.00,0.00,0.00,0.00];
 
 // Classification categories (must match backend keys)
 const labelsAndOriginalIndices = [
