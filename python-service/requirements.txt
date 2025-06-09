@@ -1,1 +1,7 @@
 Flask==3.1.0
+datasets
+transformers==4.52.4
+evaluate
+numpy
+scipy
+torch
