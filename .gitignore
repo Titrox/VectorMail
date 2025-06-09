@@ -1,6 +1,5 @@
 # == Python ==
-
-.__pychache__
+__pychache__/
 
 # === Node / Vue.js ===
 node_modules/
