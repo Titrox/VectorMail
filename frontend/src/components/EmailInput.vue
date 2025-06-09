@@ -98,7 +98,6 @@ async function evaluateEmail() {
 // Call Spring Boot backend to get classification results
 async function getProbs(emailToEvaluate) {
   try {
-    console.log(emailToEvaluate)
     const response = await axios.post(
         `${springBootUrl}/evaluate-email`,
         emailToEvaluate,
@@ -110,7 +109,7 @@ async function getProbs(emailToEvaluate) {
     );
     updateProbs(response.data);
   } catch (e) {
-    console.log(e.message);
+    alert(`Verbindung zum Backend gescheitert: ${e.message}. \n Läuft Springboot? Läuft Docker?`)
   }
 }
 
