@@ -1,6 +1,6 @@
 # Python Classification Service - VectorMail
 
-This service is a core component of the VectorMail project, responsible for classifying email texts. It utilizes a machine learning model (built with transformers and PyTorch) to predict the category of an email. The service is built with Flask and can be run as a standalone server or as a Docker container.
+This service is a core component of the VectorMail project, responsible for classifying email texts. It utilizes BERT to predict the category of an email. The service is built with Flask and can be run as a standalone server or as a Docker container.
 
 ---
 
@@ -47,7 +47,7 @@ The service can be built and run using Docker Compose from the **root directory*
     ```bash
     docker-compose up --build
     ```
-This will build the Docker image for the `python-service` (if not already built) and start a container. The service within the container will be accessible on port 5000 as configured in `docker-compose.yml` and the `Dockerfile`.
+This will build the Docker image for the `python-service` (if not already built) and start a container, this might take some time. The service within the container will be accessible on port 5000 as configured in `docker-compose.yml` and the `Dockerfile`.
 
 ---
 
@@ -57,7 +57,7 @@ The service provides a single API endpoint for email classification:
 
 ### POST `/evaluate-email`
 
-*   **Purpose**: Receives an email text, classifies it using the machine learning model, and returns the predicted probabilities for various categories.
+*   **Purpose**: Receives an email text, classifies it using the machine learning model, and returns the predicted probabilities for defined categories.
 *   **Request**:
     *   Method: `POST`
     *   Body: A JSON string containing the email text to be classified.
@@ -69,9 +69,9 @@ The service provides a single API endpoint for email classification:
     *   A JSON object containing the classification probabilities (as percentages, rounded to two decimal places) for predefined categories.
         ```json
         {
-          "Hausrat-Schaden": 0.0,
-          "Haftpflicht": 0.01,
-          "Kfz-Schaden": 99.98,
+          "Hausrat-Schaden": 0.01,
+          "Haftpflicht": 0.02,
+          "Kfz-Schaden": 99.97,
           "Reiseschaden": 0.0,
           "Tierkrankheit": 0.0
         }
@@ -83,10 +83,10 @@ The service provides a single API endpoint for email classification:
 ## Key Components/Files
 
 *   `flask_server.py`: The main Flask application file. It defines the `/evaluate-email` API endpoint and handles incoming requests.
-*   `prediction.py`: Contains the core logic for loading the pre-trained machine learning model and making predictions on email text.
-*   `training.py`: Includes scripts and functions related to training the classification model (details of the training process might be outside the direct operational scope of this service but are relevant for model updates or retraining).
-*   `emails.json`: Likely contains example emails or data that can be used for testing or demonstration.
-*   `email_generator.py`: A script potentially used for generating synthetic email data for testing or development purposes.
+*   `prediction.py`: Contains the core logic for loading the pre-trained machine learning model and making predictions on e-mail text.
+*   `training.py`: Includes scripts and functions related to training the classification model
+*   `emails.json`: Contains generated e-mails used for fine tuning.
+*   `email_generator.py`: A script used for generating synthetic email data for testing or development purposes.
 *   `requirements.txt`: Lists all Python dependencies required for this service. These are installed using `pip install -r requirements.txt`.
 *   `Dockerfile`: Defines the instructions for building a Docker image for this service, enabling containerized deployment.
 
