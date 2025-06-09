@@ -75,7 +75,7 @@ The application will be available at [http://localhost:5173](http://localhost:51
 - [`api/README.md`](api/README.md) – Backend endpoints and setup
 - [`python-service/README.md`](api/README.md) – Docker setup and architecture details
 - [`implementation.pdf`](docs/implementation.pdf) – Details technical implementation and architecture
-- [`theory.pdf`](docs/theory.pdf) – Describes algorithms like Minimax and evaluation strategies
+- [`theory.pdf`](docs/theory.pdf) – In-depth theoretical overview of the project's foundation.
 
 ---
 
