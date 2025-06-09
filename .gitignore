@@ -1,3 +1,7 @@
+# == Python ==
+
+.__pychache__
+
 # === Node / Vue.js ===
 node_modules/
 dist/
