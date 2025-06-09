@@ -1,6 +1,7 @@
 # Frontend – VectorMail
 
 This is the frontend of the VectorMail email classification project. It provides an interactive interface for users to input email texts and see their classification results in real time. A dynamic display of classification probabilities reacts visually (e.g., through color-coding), and users can enter their own email texts or access example emails.
+
 ---
 
 ## Tech Stack
