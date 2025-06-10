@@ -8,7 +8,7 @@ from scipy.special import softmax
 # ================== Load Model ===============================
 
 # pre-trained model path
-model_path = "bert-base-german-cased"
+model_path = "timter/bert-vectormail"
 
 # load tokenizer
 tokenizer = AutoTokenizer.from_pretrained(model_path)
@@ -53,7 +53,7 @@ for name, param in model.base_model.named_parameters():
 
 # ================== Load Trainingsdata ===============================
 
-with open("trainingsdata/emails.json", 'r', encoding='utf-8') as f:
+with open("training_data/emails_2.json", 'r', encoding='utf-8') as f:
     data_from_json = json.load(f)
 
 # Create a Hugging Face Dataset object from the list of email dictionaries.
