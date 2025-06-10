@@ -14,7 +14,6 @@ app = Flask(__name__)
 def evaluate_email():
     
     email = request.json
-    logger.debug(email)
     probabilities = prediction.predict_label(email).squeeze().numpy() * 100
 
 
@@ -26,6 +25,7 @@ def evaluate_email():
         "Reiseschaden": float(round(probabilities[3],2)),
         "Tierkrankheit": float(round(probabilities[4],2)),
     }
+
 
     return jsonify(probs)
 
