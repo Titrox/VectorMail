@@ -35,3 +35,4 @@ Desktop.ini
 # === Optionales Caching (z. B. von Vite/TypeScript) ===
 .cache/
 .cache-loader/
+/python-service
