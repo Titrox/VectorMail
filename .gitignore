@@ -36,3 +36,4 @@ Desktop.ini
 .cache/
 .cache-loader/
 /python-service
+/python-service/__pycache__
