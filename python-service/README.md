@@ -84,9 +84,9 @@ The service provides a single API endpoint for email classification:
 
 *   `flask_server.py`: The main Flask application file. It defines the `/evaluate-email` API endpoint and handles incoming requests.
 *   `prediction.py`: Contains the core logic for loading the pre-trained machine learning model and making predictions on e-mail text.
-*   `training.py`: Includes scripts and functions related to training the classification model
-*   `emails.json`: Contains generated e-mails used for fine tuning.
-*   `email_generator.py`: A script used for generating synthetic email data for testing or development purposes.
+*   `training/training.py`: Includes scripts and functions related to training the classification model.
+*   `training/training_data/`: This directory contains generated e-mails used for fine tuning (e.g., `emails_1.json`, `emails_2.json`).
+*   `training/email_generator.py`: A script used for generating synthetic email data for testing or development purposes.
 *   `requirements.txt`: Lists all Python dependencies required for this service. These are installed using `pip install -r requirements.txt`.
 *   `Dockerfile`: Defines the instructions for building a Docker image for this service, enabling containerized deployment.
 
