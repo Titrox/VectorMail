@@ -43,9 +43,9 @@ cd api
 mvn spring-boot:run
 ```
 
-The backend will launch on [http://localhost:8080](http://localhost:8080) and acts as a bridge between frontend and engine.
+The application will launch on [http://localhost:8080](http://localhost:8080).
 
-### 3. Start the Frontend (Vue 3 + Vite)
+### 3. (Optional) Start the Frontend Dev Server (Vue 3 + Vite)
 
 Follow the instructions in [`frontend/README.md`](frontend/README.md):
 
@@ -55,7 +55,7 @@ npm install
 npm run dev
 ```
 
-The application will be available at [http://localhost:5173](http://localhost:5173) by default.
+The dev server will be available at [http://localhost:5173](http://localhost:5173) by default.
 
 ---
 
@@ -73,7 +73,7 @@ The application will be available at [http://localhost:5173](http://localhost:51
 
 - [`frontend/README.md`](frontend/README.md) – UI setup and features
 - [`api/README.md`](api/README.md) – Backend endpoints and setup
-- [`python-service/README.md`](api/README.md) – Docker setup and architecture details
+- [`python-service/README.md`](python-service/README.md) – Docker setup and architecture details
 - [`implementation.pdf`](docs/implementation.pdf) – Details technical implementation and architecture
 - [`theory.pdf`](docs/theory.pdf) – In-depth theoretical overview of the project's foundation.
 
