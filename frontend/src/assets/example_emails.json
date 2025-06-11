@@ -1,7 +1,7 @@
 [
   {
     "label": "kfz-schaden",
-    "text": "Sehr geehrte Frau Lehmann,\n\nich möchte Ihnen einen Schaden an meinem Fahrzeug melden. Gestern Abend gab es einen Wildunfall auf der Landstraße. Glücklicherweise wurde niemand verletzt, aber mein Auto hat nun einen Blechschaden an der Front. \nVielen Dank.\nMit freundlichen Grüßen,\nMax Mustermann"
+    "text": "Sehr geehrte Frau Lehmann,\n\nich möchte Ihnen einen Schaden an meinem Fahrzeug melden. Gestern Abend gab es einen Wildunfall auf der Landstraße. Glücklicherweise wurde niemand verletzt, aber mein Auto hat nun einen Blechschaden an der Front.\nMit freundlichen Grüßen,\nMax Mustermann"
   },
   {
     "label": "kfz-schaden",
@@ -17,7 +17,7 @@
   },
   {
     "label": "hausrat-schaden",
-    "text": "Guten Tag Herr Schulz, \n\nbei einem Einbruch in meine Wohnung am vergangenen Wochenende wurden mehrere Wertgegenstände entwendet. Ich habe bereits Anzeige bei der Polizei erstattet. Anbei finden Sie die Liste der gestohlenen Sachen.\nVielen Dank.\nViele Grüße,\nMichael Richter"
+    "text": "Guten Tag Herr Schulz, \n\nbei einem Einbruch in meine Wohnung am vergangenen Wochenende wurden mehrere Wertgegenstände entwendet. Ich habe bereits Anzeige bei der Polizei erstattet. Anbei finden Sie die Liste der gestohlenen Sachen.\nViele Grüße,\nMichael Richter"
   },
   {
     "label": "hausrat-schaden",
@@ -57,7 +57,7 @@
   },
   {
     "label": "tierkrankheit",
-    "text": "Sehr geehrte Frau Fuchs,\n\nmein Hund musste aufgrund einer akuten Magenverstimmung tierärztlich behandelt werden. Ich reiche hiermit die Rechnung zur Kostenerstattung ein. Vielen Dank für Ihre Mühe.\nVielen Dank.\nMit freundlichen Grüßen,\nBenedikt Mayer"
+    "text": "Sehr geehrte Frau Fuchs,\n\nmein Hund musste aufgrund einer akuten Magenverstimmung tierärztlich behandelt werden. Ich reiche hiermit die Rechnung zur Kostenerstattung ein. Vielen Dank für Ihre Mühe.\nMit freundlichen Grüßen,\nBenedikt Mayer"
   },
   {
     "label": "tierkrankheit",
@@ -65,7 +65,7 @@
   },
   {
     "label": "tierkrankheit",
-    "text": "Sehr geehrte Versicherung, \n\nbei meinem Pferd wurde eine chronische Erkrankung diagnostiziert, die regelmäßige Medikamentengabe erfordert. Ich möchte klären, welche Kosten hierfür von der Versicherung getragen werden\nVielen Dank.\nMit freundlichen Grüßen,\nJulian Frank"
+    "text": "Sehr geehrte Versicherung, \n\nbei meinem Pferd wurde eine chronische Erkrankung diagnostiziert, die regelmäßige Medikamentengabe erfordert. Ich möchte klären, welche Kosten hierfür von der Versicherung getragen werden.\nMit freundlichen Grüßen,\nJulian Frank"
   },
   {
     "label": "tierkrankheit",
