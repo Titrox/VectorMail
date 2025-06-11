@@ -73,7 +73,7 @@ The dev server will be available at [http://localhost:5173](http://localhost:517
 
 - [`frontend/README.md`](frontend/README.md) – UI setup and features
 - [`api/README.md`](api/README.md) – Backend endpoints and setup
-- [`python-service/README.md`](api/README.md) – Docker setup and architecture details
+- [`python-service/README.md`](python-service/README.md) – Docker setup and architecture details
 - [`implementation.pdf`](docs/implementation.pdf) – Details technical implementation and architecture
 - [`theory.pdf`](docs/theory.pdf) – In-depth theoretical overview of the project's foundation.
 
