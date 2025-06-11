@@ -43,15 +43,15 @@ jobs:
       run: |
         rm -rf src/main/resources/static/*
         mkdir -p src/main/resources/static/
-      working-directory: ./backend
+      working-directory: ./api
 
     - name: Copy Frontend Build to Backend Static Resources
       run: cp -r ../frontend/dist/. src/main/resources/static/
-      working-directory: ./backend
+      working-directory: ./api
 
     - name: Build Spring Boot Application
       run: mvn clean package 
-      working-directory: ./backend
+      working-directory: ./api
 
     - name: Upload Spring Boot JAR as Artifact
       uses: actions/upload-artifact@v4
