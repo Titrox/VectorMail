@@ -75,34 +75,30 @@ def pre_process_input(email):
 
     formatted_email = email
 
+    # Remove Beginnings
 
     beginning_found = False
-    ending_found = False
 
-    # Remove Beginnings
     for text in beginnings_to_remove:
-
 
         # Return if beginning already found
         if beginning_found:
             break
 
-        # Name expected?
+        # Name expected? TODO remove name correctly
         if "[NAME]" in text:
             text = text.replace("[NAME]", "").strip()
             
-        if text in formatted_email:
+        if text.lower() in formatted_email.lower():
 
             beginning_found = True
-
-            logger.debug(f"Text found: {text}")
-
 
             index = formatted_email.find(text)
             if index != -1:
                 # Remove following word
                 after = formatted_email[index + len(text):].strip()
-                logger.debug(f"After: {after}")
+
+
                 remaining = after.split(" ", 1)[1] if " " in after else ""
                 formatted_email = "[BEGIN_EMAIL] " + remaining
 
@@ -112,26 +108,30 @@ def pre_process_input(email):
         formatted_email = "[BEGIN_EMAIL] " + formatted_email
 
 
+
+
     # Remove Endings
+
+    ending_found = False
+    index_to_cut = 10000
+
     for text in endings_to_remove:
 
-
-        # Return if ending already found
-        if ending_found:
-            break
-
         # Check for ending 
-        if text in formatted_email:
+        if text.lower() in formatted_email.lower():
 
             ending_found = True
 
-            index = formatted_email.find(text)
-            if index != -1:
-                # Cut the following rest
-                formatted_email = formatted_email[:index].rstrip() + " [END_EMAIL]"
-   
+            index = formatted_email.lower().find(text.lower()) 
 
-    if not ending_found:
+            # Store index of first occuring ending 
+            if index != -1 and index_to_cut > index:
+                index_to_cut = index
+
+
+    if ending_found:
+        formatted_email = formatted_email[:index].rstrip() + " [END_EMAIL]" 
+    else:
         formatted_email =  formatted_email + " [END_EMAIL]"
  
 
