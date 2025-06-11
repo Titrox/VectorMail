@@ -41,10 +41,6 @@ The service can be built and run using Docker Compose from the **root directory*
 1.  Ensure you are in the root `VectorMail/` directory.
 2.  Build and start the service:
     ```bash
-    docker-compose up --build python-service
-    ```
-    If you want to run all services defined in `docker-compose.yml` (which might include this python-service):
-    ```bash
     docker-compose up --build
     ```
 This will build the Docker image for the `python-service` (if not already built) and start a container, this might take some time. The service within the container will be accessible on port 5000 as configured in `docker-compose.yml` and the `Dockerfile`.
