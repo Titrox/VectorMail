@@ -33,7 +33,7 @@ public class ModelController {
 
             return ResponseEntity
                     .status(HttpStatus.BAD_GATEWAY)
-                    .body("Fehler beim Aufruf des ML-Modells: " + e.getMessage());
+                    .body("Fehler beim Aufruf des Modells: " + e.getMessage());
         }
     }
 }
