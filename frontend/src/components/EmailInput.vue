@@ -201,7 +201,7 @@ function getColorForProbability(prob) {
 
       <div class="container container--email-input">
 
-        <div style="color: rgba(0,0,0,0.5); font-size: 80%">Probiere <b>Vectormail</b> mit Beispiel E-Mails oder verfasse eine eigene</div>
+        <div style="color: rgba(0,0,0,0.5); font-size: 80%">Probiere <b>VectorMail</b> mit Beispiel E-Mails oder verfasse eine eigene</div>
 
         <textarea class="textarea textarea--email-input" :placeholder="exampleEmail" v-model="userEmail"></textarea>
 
