@@ -107,16 +107,21 @@ async function getProbs(emailToEvaluate) {
           }
         }
     );
+    console.log("HALLLOO")
     updateProbs(response.data);
   } catch (e) {
-    alert(`Verbindung zum Backend gescheitert: ${e.message}. \n Läuft Springboot? Läuft Docker?`)
+
+    if (e.status === 502) {
+      alert(`Verbindung zu Flask gescheitert: ${e.message}. \n Läuft der Dockercontainer?`)
+    } else {
+      alert(`Verbindung zum Backend gescheitert: ${e.message}. \n Läuft Springboot? Läuft Docker?`)
+    }
   }
 }
 
 // Update label probability array with backend response
 function updateProbs(labelProbsJson) {
   labelsAndOriginalIndices.forEach((label, index) => {
-    console.log(label);
     lableProbs[index] = labelProbsJson[label] ?? 0.00;
   });
 }

@@ -1,9 +1,6 @@
 package com.example.VectorMail.controller;
 
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,26 +10,30 @@ import org.springframework.web.client.RestTemplate;
 public class ModelController {
 
     @PostMapping("/evaluate-email")
-    public String evaluateEmail(@RequestBody String emailToEvaluate) {
+    public ResponseEntity<String> evaluateEmail(@RequestBody String emailToEvaluate) {
 
-        final String flaskUrl = "http://localhost:5000/";
-
+        final String flaskUrl = "http://localhost:5000";
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<String> response;
-
 
         try {
-            System.out.println(emailToEvaluate);
-            HttpHeaders header = new HttpHeaders();
-            header.setContentType(MediaType.APPLICATION_JSON);
-            HttpEntity<String> requestEntity = new HttpEntity<>(emailToEvaluate, header);
-            response = restTemplate.postForEntity(String.format("%s/evaluate-email", flaskUrl), requestEntity, String.class);
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
 
-            return response.getBody();
+            HttpEntity<String> requestEntity = new HttpEntity<>(emailToEvaluate, headers);
+            ResponseEntity<String> response = restTemplate.postForEntity(
+                    flaskUrl + "/evaluate-email",
+                    requestEntity,
+                    String.class
+            );
+
+            return ResponseEntity.ok(response.getBody());
 
         } catch (Exception e) {
-            System.err.println("Request failed: " + e.getMessage());
+            System.err.println("Request to Flask failed: " + e.getMessage());
+
+            return ResponseEntity
+                    .status(HttpStatus.BAD_GATEWAY)
+                    .body("Fehler beim Aufruf des ML-Modells: " + e.getMessage());
         }
-        return null;
     }
 }

@@ -11,7 +11,7 @@
     </div>
 
     <div class="container container--text">
-      <p class="title"><b>Vectormail</b></p>
+      <p class="title"><b>VectorMail</b></p>
       <p>Entwickelt von <b> Tim Terbach </b></p>
     </div>
 
