@@ -32,6 +32,9 @@ Make sure Docker is installed and running, then execute from the root directory:
 docker-compose up --build
 ```
 
+This starts the Flask-based classification engine in a container on port 5000.
+Note on Python Service: For demonstration purposes, the integrated Flask development server is used. Please be aware that for a production environment, a more robust WSGI server (e.g., Gunicorn or uWSGI) should be configured.
+
 This starts the Flask-based classification engine in a container on port **5000**.
 
 ### 2. Start the Backend (Spring Boot)
