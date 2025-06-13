@@ -12,7 +12,7 @@ VectorMail is a modular email classification system featuring an interactive use
 VectorMail/
 ├── api/                 # Spring Boot backend (REST API)
 ├── frontend/            # Vue.js frontend (Vite)
-├── python-service/      # Python-based classification module (Flask)
+├── python-service/      # Python-based classification module (Flask, Hugging Face)
 ├── docs/                # Theory and implementation details
 ├── docker-compose.yml   # Launches the Fine-Tuned LLM
 ├── README.md            # Project overview
